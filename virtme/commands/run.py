@@ -407,6 +407,13 @@ def main():
     if args.show_command:
         print(' '.join(shlex.quote(a) for a in qemuargs))
 
+    qemuargs.extend(['-smp', '2'])
+    qemuargs.extend(['-s'])
+
+    qemuargs.extend(['-m', '2048'])
+
+    print(qemuargs)
+    # os.exit(1)
     # Go!
     if not args.dry_run:
         os.execv(qemu.qemubin, qemuargs)
